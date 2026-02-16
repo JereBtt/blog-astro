@@ -1,0 +1,87 @@
+<div id="contact-widget" class="fixed bottom-6 right-6 z-50">
+    <!-- Botón flotante -->
+    <button
+        id="toggle-widget"
+        class="bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-2xl"
+    >
+        💬
+    </button>
+
+    <!-- Card -->
+    <div
+        id="widget-card"
+        class="hidden mt-4 w-80 bg-white rounded-xl shadow-2xl overflow-hidden"
+    >
+        <div class="p-4 space-y-3">
+            <input
+                type="text"
+                placeholder="Nombre"
+                class="w-full border rounded-lg p-2 text-sm"
+                id="nombre"
+            />
+
+            <input
+                type="email"
+                placeholder="Email"
+                class="w-full border rounded-lg p-2 text-sm"
+                id="email"
+            />
+
+            <input
+                type="tel"
+                placeholder="Teléfono"
+                class="w-full border rounded-lg p-2 text-sm"
+                id="telefono"
+            />
+
+            <button
+                id="send-whatsapp"
+                class="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg"
+            >
+                Contactar por WhatsApp
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const btn = document.getElementById("toggle-widget");
+    const card = document.getElementById("widget-card");
+
+    if (btn && card) {
+        btn.addEventListener("click", () => {
+            card.classList.toggle("hidden");
+        });
+    }
+</script>
+<script>
+    const sendBtn = document.getElementById("send-whatsapp");
+
+    if (sendBtn) {
+        sendBtn.addEventListener("click", () => {
+            const nombre =
+                (document.getElementById("nombre") as HTMLInputElement)
+                    ?.value || "";
+            const email =
+                (document.getElementById("email") as HTMLInputElement)?.value ||
+                "";
+            const telefono =
+                (document.getElementById("telefono") as HTMLInputElement)
+                    ?.value || "";
+
+            const numero = "5493571551356"; // 🔥 PONÉ TU NÚMERO REAL
+
+            const mensaje = `
+Hola, quiero asesoramiento.
+
+Nombre: ${nombre}
+Email: ${email}
+Teléfono: ${telefono}
+`;
+
+            const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+
+            window.open(url, "_blank");
+        });
+    }
+</script>
